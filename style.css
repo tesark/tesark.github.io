@@ -20,26 +20,38 @@ figure {
 	width: 100vw;
 }
 
-svg {
+#logo {
 	padding: 5vw;
-	width: 75vw;
+	width: 50vw;
 }
 
-path {
-	stroke-dasharray: 1000;
-	stroke-dashoffset: 0;
-	animation: dash 5s linear normal 1;
+#logo path {
+	stroke-dasharray: 1500;
+	stroke-dashoffset: 1500;
 	fill: rgba(255, 255, 255, 1.0);
+	fill: url("#logo-gradient");
 	stroke: rgba(255, 255, 255, 1.0);
+  	stroke-miterlimit: 5;
+	fill-opacity: 0;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards;
+	animation-iteration: 1;
+
+	animation-name: DrawLine, FadeStroke, FillIn;
+	animation-delay: 0s, 2.5s, 2.5s;
+  	animation-duration: 2s, 1s, 1s; 
 }
 
-@keyframes dash {
-	from {
-		stroke-dashoffset: 1000;
-		fill: none;
-	}
-	to {
-		stroke-dashoffset: 0;
-		fill: rgba(255, 255, 255, 1.0);
-	}
+
+@keyframes DrawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes FadeStroke {
+  to { stroke-opacity: 0; }
+}
+
+@keyframes FillIn {
+  from { fill-opacity: 0; }
+  to { fill-opacity: 1; }
 }
